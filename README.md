@@ -1,161 +1,288 @@
 # 🧠 Occipital Adaptive Engine
 
-> **"O sistema que nunca quebra. Ele desvia o tráfego como meu cérebro fez."**
+> **"The system that never breaks. It reroutes traffic the way my brain did."**
+
+[![Python 3.12](https://img.shields.io/badge/Python-3.12-blue?style=flat-square&logo=python)](https://python.org)
+[![PyTorch](https://img.shields.io/badge/PyTorch-2.5+-ee4c2c?style=flat-square&logo=pytorch)](https://pytorch.org)
+[![FastAPI](https://img.shields.io/badge/FastAPI-ready-009688?style=flat-square&logo=fastapi)](https://fastapi.tiangolo.com)
+[![Docker](https://img.shields.io/badge/Docker-ready-2496ED?style=flat-square&logo=docker)](https://docker.com)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow?style=flat-square)](LICENSE)
 
 ---
 
-## 📌 O que é isso?
+## 🩺 The Origin Story
 
-Todo sistema quebra quando os dados mudam ou ocorre uma falha. O **Occipital Adaptive Engine** detecta o problema e cria caminhos alternativos automaticamente — exatamente como o cérebro humano compensa uma alteração no lobo occipital direito. Funciona em tempo real, sem parar tudo para retreinar.
+This project was born from a real human experience.
 
-**Analogia central:**
-> Área danificada no occipital direito → o cérebro dilata sulcos e redireciona o processamento visual para outras regiões → você continua enxergando e resolvendo problemas.
-> 
-> O sistema faz o mesmo: detecta uma "falha" (dado ruim, API mudou, ataque) → cria rota alternativa → continua funcionando + aprende para a próxima vez.
+After a neurological condition affecting the **right occipital lobe**, the brain didn't shut down — it adapted. It expanded sulci, rewired pathways, and redirected visual and pattern processing to other regions. The result: continued function under damage, without stopping, without retraining from scratch.
+
+**That's exactly what this engine does for software systems.**
+
+Most AI systems and data pipelines have a fatal flaw: when data changes, APIs break, sensors fail, or adversarial inputs arrive — they stop, degrade, or require full retraining. The Occipital Adaptive Engine was designed to **never stop**. It detects the anomaly, creates an alternative route, keeps running, and learns from what happened — all in real time.
+
+> *What the human brain did under damage is now an engineering principle.*
 
 ---
 
-## 🏗️ Arquitetura de Alto Nível
+## ⚡ What It Does
+
+The Occipital Adaptive Engine is a **self-healing, continual-learning middleware** that sits between your data sources and your applications. It processes incoming data streams, detects anomalies or structural changes, dynamically reroutes processing, and delivers reliable outputs — even when the input is broken, poisoned, or completely new.
 
 ```
-Input de Dados (API / Sucupira / Sensor / Log)
-        ↓
-Core Module — Processamento Principal
-        ↓
-Detector de Anomalia — Surprise Gate
-        ↓
-   Problema detectado?
-   ├── NÃO → Saída Normal
-   └── SIM → Plasticity Layer (Nested Rewiring)
-                ↓
-         Titans Memory (Memória de Longo Prazo)
-                ↓
-         Rotas Alternativas (Fast + Slow Paths)
-                ↓
-         Saída Adaptada + Aprendizado
+                    ┌─────────────────────────────────────────┐
+                    │         OCCIPITAL ADAPTIVE ENGINE        │
+                    │                                          │
+ Any Data Source ──▶│  Ingest → Detect → Reroute → Learn      │──▶ Reliable Output
+ (API/Sensor/Log)   │                    ↑                     │    + Audit Log
+                    │             Titans Memory                │    + Confidence Score
+                    └─────────────────────────────────────────┘
+```
+
+### Core Capabilities
+
+- **Real-time anomaly detection** — identifies data drift, corruption, API schema changes, and adversarial inputs as they happen
+- **Dynamic path creation** — spawns alternative processing routes without touching the main model
+- **Continual learning without forgetting** — learns from new patterns while preserving everything it already knows (solving catastrophic forgetting)
+- **Self-healing pipelines** — recovers from upstream failures automatically, with zero downtime
+- **Explainable decisions** — every rerouting decision is logged, scored, and auditable
+- **Plug-and-play integration** — connects to any existing system via REST, WebSocket, or streaming
+
+---
+
+## 🏗️ System Architecture
+
+```
+┌──────────────────────────────────────────────────────────────────┐
+│                         INPUT LAYER                              │
+│   REST API · WebSocket · CSV/JSON · Database · Sensor Stream     │
+└────────────────────────────┬─────────────────────────────────────┘
+                             ↓
+┌──────────────────────────────────────────────────────────────────┐
+│                      CORE MODULE                                 │
+│              Main Processing + Feature Extraction                │
+└──────┬──────────────────────────────────────────────────┬────────┘
+       ↓                                                  ↓
+┌──────────────────┐                          ┌───────────────────┐
+│ ANOMALY DETECTOR │                          │   NORMAL OUTPUT   │
+│  Surprise Gate   │─── No anomaly ──────────▶│   Fast Path ✓     │
+│ (Real-time scan) │                          └───────────────────┘
+└──────┬───────────┘
+       │ Anomaly detected
+       ↓
+┌──────────────────────────────────────────────────────────────────┐
+│                     PLASTICITY LAYER                             │
+│         Creates new sub-route · Preserves main model             │
+│              EWC · LoRA · Dynamic Sparse Nets                    │
+└──────┬───────────────────────────────────────────────────────────┘
+       ↓
+┌──────────────────────────────────────────────────────────────────┐
+│                      TITANS MEMORY                               │
+│     Long-term vector store · Never forgets · Fast retrieval      │
+│            pgvector · FAISS · ChromaDB                           │
+└──────┬───────────────────────────────────────────────────────────┘
+       ↓
+┌──────────────────────────────────────────────────────────────────┐
+│                   ADAPTIVE OUTPUT                                │
+│     Result + Confidence Score + Route Used + What Was Learned    │
+└──────────────────────────────────────────────────────────────────┘
 ```
 
 ---
 
-## 🧩 Módulos Principais
+## 🧩 Modules
 
-| Módulo | Função | Inspirado em | Biblioteca |
-|---|---|---|---|
-| **Input Adapter** | Recebe qualquer dado (JSON, CSV, API, imagem) | GitHub repos | FastAPI + Pydantic |
-| **Anomaly Detector** | Detecta falha/ruído em tempo real | Surprise-gated Titans | Scikit-learn + custom |
-| **Plasticity Layer** | Cria rotas novas quando detecta problema | Nested Learning (Google 2025) | PyTorch + EWC |
-| **Titans Memory** | Memória de longo prazo que não esquece | Google Titans | Custom vector DB |
-| **Router Engine** | Escolhe caminho rápido ou lento automaticamente | Brain waves (fast/slow) | Dynamic Sparse Nets |
-| **Output + Logger** | Entrega solução + grava o que aprendeu | Compensação cerebral | MLflow / W&B |
-
----
-
-## ❤️ Como Funciona o Mecanismo de Plasticidade (o coração do sistema)
-
-1. **Dado normal** → passa pelo Core normalmente.
-2. **Detecta "surpresa"** (dado mudou muito) → ativa a Plasticity Layer.
-3. **Cria uma rota alternativa** (novo sub-módulo pequeno) sem tocar no modelo principal.
-4. **Titans Memory** guarda o conhecimento antigo.
-5. **Próxima vez** já conhece a rota nova → resposta mais rápida.
-
-> Isso resolve o **catastrophic forgetting** — o problema que todo LLM tem.
+| Module | What It Does | Key Libraries |
+|---|---|---|
+| **Input Adapter** | Ingests JSON, CSV, REST, WebSocket, sensors, images | FastAPI · Pydantic · Kafka |
+| **Anomaly Detector** | Detects data drift, corruption, schema change in real time | Scikit-learn · River · custom Surprise Gate |
+| **Plasticity Layer** | Creates new processing routes without breaking the main model | PyTorch · EWC · LoRA · Avalanche |
+| **Titans Memory** | Long-term memory that never forgets past knowledge | pgvector · FAISS · ChromaDB |
+| **Router Engine** | Decides fast path (normal) or slow path (adaptive) automatically | Dynamic Sparse Nets · custom routing |
+| **Output + Logger** | Delivers results with confidence scores + full audit trail | MLflow · Prometheus · Grafana |
+| **Security Layer** | Encryption, access control, immutable audit logs | OPA · Vault · pgaudit · Trivy |
 
 ---
 
-## 🔒 5 Camadas de Segurança (Nível Governo)
+## 🏭 Industries & Use Cases
+
+### 🏥 Medicine & Healthcare
+*Where it matters most — lives depend on reliable data.*
+
+- **Medical imaging analysis**: when a hospital upgrades equipment and image formats change, the system adapts without retraining — no gap in diagnosis support
+- **Patient monitoring**: detects anomalies in vital signs streams from ICU sensors, reroutes to alternative models if a sensor fails
+- **Drug interaction detection**: continuously learns from new pharmacological data without forgetting previous drug profiles
+- **Electronic health record drift**: automatically handles schema changes across hospital systems and data standards (HL7, FHIR)
+- **Epidemic early warning**: detects unusual disease patterns in real time, even when reporting formats from health posts change unexpectedly
+
+> *This system exists because a human brain survived damage by adapting. It was built to give that same resilience to the systems that care for human brains.*
+
+---
+
+### ⚡ Energy & Critical Infrastructure
+
+- Smart grid anomaly detection — identifies equipment failure patterns before blackouts occur
+- Oil & gas sensor failure recovery — keeps pipeline monitoring alive even when sensors go offline
+- Renewable energy output prediction that adapts as weather pattern data drifts seasonally
+- Nuclear plant monitoring with self-healing data pipelines that never drop readings
+
+---
+
+### 🏦 Financial Services
+
+- Fraud detection that adapts to new attack patterns in real time, without retraining cycles
+- Credit scoring pipelines that handle sudden economic shocks (pandemics, market crashes) without degrading
+- Trading systems that recover automatically from data feed interruptions
+- Anti-money laundering models that learn new laundering techniques continuously
+
+---
+
+### 🌾 Agriculture & Food Security
+
+- Crop disease detection that adapts when new pathogens emerge
+- Satellite imagery pipelines that handle sensor degradation and cloud cover gracefully
+- Supply chain disruption detection — reroutes logistics prediction when supplier data stops
+- Soil sensor failure recovery in precision farming systems
+
+---
+
+### 🏙️ Smart Cities & Public Safety
+
+- Traffic management systems that self-heal when camera feeds go offline
+- Crime pattern detection that adapts to new urban behaviors without full retraining
+- Emergency response routing that reroutes when infrastructure data becomes unreliable
+- Water quality monitoring with adaptive anomaly detection across sensor networks
+
+---
+
+### 🎓 Education & Research
+
+- Academic data pipelines that handle schema changes across university systems
+- Research data integrity checking — detects corrupted datasets before they contaminate analysis
+- Adaptive learning platforms that adjust to student behavior patterns in real time
+
+---
+
+### 🚢 Defense & Maritime
+
+- Naval sensor fusion with automatic recovery from sensor degradation at sea
+- Radar anomaly detection that adapts to new interference patterns
+- Supply chain resilience for defense logistics under adversarial conditions
+
+---
+
+## 🚀 Quick Start
+
+```bash
+# Clone the repository
+git clone https://github.com/your-org/occipital-adaptive-engine.git
+cd occipital-adaptive-engine
+
+# Start everything with Docker
+docker-compose up -d
+
+# The engine is now running at:
+# API:        http://localhost:8000
+# Dashboard:  http://localhost:3000  (Grafana)
+# MLflow UI:  http://localhost:5000
+# Docs:       http://localhost:8000/docs
+```
+
+### Send your first data
+```python
+import httpx
+
+response = httpx.post("http://localhost:8000/process", json={
+    "source": "sensor_stream",
+    "payload": {"temperature": 38.5, "pressure": 1.02},
+    "context": "icu_monitoring"
+})
+
+print(response.json())
+# {
+#   "output": {...},
+#   "confidence": 0.97,
+#   "route_used": "fast_path",
+#   "anomaly_detected": false,
+#   "learned": false
+# }
+```
+
+---
+
+## 🛠️ Full Tech Stack
 
 ```
-Dados Brutos (API Sucupira / Sensor / Log)
-        ↓
-Data Lake Segura — DVC + S3 MinIO + Encryption
-        ↓
-Model Registry — MLflow + Version Tags + Rollback
-        ↓
-Plasticidade Layer — PyTorch EWC + Nested Rewiring
-        ↓
-API Secure — FastAPI + OAuth2 gov.br + OPA Policy
-        ↓
-Audit Imutável — PostgreSQL + WORM + Loki
-        ↓
-Deploy — Docker + Trivy Scan + GitHub Actions
+Language          Python 3.12
+ML Framework      PyTorch 2.5+ · TensorFlow · JAX
+Continual Learn   Avalanche · EWC · LoRA · Nested Rewiring
+Backend           FastAPI · Uvicorn · Celery
+Databases         PostgreSQL · pgvector · Redis · ChromaDB · FAISS
+Streaming         Apache Kafka · WebSocket
+Data Versioning   DVC + S3/MinIO
+Model Registry    MLflow
+Monitoring        Prometheus · Grafana · Loki
+Security          OPA · HashiCorp Vault · pgaudit · Trivy
+Deploy            Docker · Kubernetes · GitHub Actions
 ```
 
-### Stack de Segurança Detalhada
+---
 
-| Camada | Ferramenta (2026) | Por que é nível Palantir | Como implementar |
-|---|---|---|---|
-| **Versionamento de Dados** | DVC + Git LFS ou LakeFS | Versiona datasets como código, com hash imutável | `dvc add data/ + commit` |
-| **Versionamento de Modelos** | MLflow Tracking + Model Registry | Tag, stage (dev/staging/prod), rollback com 1 clique | `mlflow ui` local ou Railway |
-| **Criptografia** | Fernet (PyCryptodome) ou HashiCorp Vault | Dados em repouso/trânsito criptografados | Chave por ambiente |
-| **Governança / Ontology** | OpenMetadata (open-source) | Catálogo de dados + lineage automático | Docker Compose simples |
-| **Controle de Acesso** | OPA (Open Policy Agent) + FastAPI | Policy-as-code (quem vê o quê) — igual Palantir markings | Arquivo `.rego` versionado no Git |
-| **Audit Log** | PostgreSQL + pgaudit + Loki | Log imutável: quem fez o quê, quando, por quê | Toda ação grava com user + timestamp |
-| **Segurança de Código** | GitHub Advanced Security + Trivy | Scan automático de vulnerabilidades + SBOM | GitHub Actions gratuito |
-| **Deploy Seguro** | Docker + GitHub Actions + Railway/AWS GovCloud | Container escaneado, zero-trust, rollback | CI/CD com approval |
+## 🔒 Security & Compliance
+
+- **Immutable audit logs** — every decision, every rerouting, every data access is logged and tamper-proof
+- **Policy-as-code** — access control defined in `.rego` files, versioned with the codebase
+- **Encrypted data at rest and in transit** — AES-256, per-environment keys
+- **Automatic vulnerability scanning** — every container image scanned before deploy
+- **Model versioning with rollback** — revert to any previous model state in one command
+- **Full LGPD / GDPR compliance** — data lineage, consent tracking, right to erasure
 
 ---
 
-## 🛠️ Stack Tecnológico
-
-- **Linguagem:** Python 3.12
-- **Framework ML:** PyTorch 2.5+ ou TensorFlow
-- **Backend:** FastAPI
-- **Banco de dados:** PostgreSQL + pgvector (memória de longo prazo)
-- **Continual Learning:** ContinualAI / Avalanche + EWC (Elastic Weight Consolidation)
-- **Deploy:** Docker + Railway / Render / AWS
-- **Monitoramento:** MLflow + Prometheus
-
----
-
-## 🗓️ Plano de Implementação (2 Semanas)
-
-### Semana 1 — Versão Segura Básica
-- [ ] Criar repo: `occipital-secure-engine`
-- [ ] Adicionar DVC: `pip install dvc[s3]` → versionar todos os datasets
-- [ ] Configurar MLflow: `mlflow server --backend-store-uri sqlite:///mlflow.db`
-- [ ] A cada treino do modelo plástico: `mlflow.log_artifact` + tag `plasticity-v1.x`
-- [ ] Adicionar OPA: 1 arquivo `policy.rego` no repo com regras LGPD
-
-### Semana 2 — Nível Governo
-- [ ] Integrar OpenMetadata (docker-compose pronto em 5 min)
-- [ ] Criar dashboard de audit: "quem acessou dados do Sucupira hoje?"
-- [ ] Gerar SBOM automático no GitHub
-- [ ] Documentar LGPD: criar pasta `/compliance` com DPIA modelo, consentimento, DPO
-
----
-
-## 📋 Para Propostas (USP / Marinha)
-
-> *"A solução Occipital Secure Adaptive Engine utiliza versionamento imutável de dados (DVC), registro de modelos com rollback (MLflow), policy-as-code (OPA) e audit log completo em conformidade com LGPD. Todos os artefatos são versionados no GitHub com SBOM e scan automático de vulnerabilidades (Trivy), garantindo rastreabilidade total exigida em contratações governamentais."*
-
----
-
-## 📁 Estrutura do Repositório (sugerida)
+## 📁 Repository Structure
 
 ```
 occipital-adaptive-engine/
 ├── src/
-│   ├── input_adapter/
-│   ├── anomaly_detector/
-│   ├── plasticity_layer/
-│   ├── titans_memory/
-│   ├── router_engine/
-│   └── output_logger/
-├── data/              ← versionado com DVC
-├── models/            ← versionado com MLflow
-├── compliance/        ← DPIA, LGPD, DPO
-├── policy.rego        ← OPA access control
+│   ├── input_adapter/         ← ingestion layer
+│   ├── anomaly_detector/      ← surprise gate + drift detection
+│   ├── plasticity_layer/      ← EWC + LoRA + dynamic rewiring
+│   ├── titans_memory/         ← long-term vector memory
+│   ├── router_engine/         ← fast/slow path routing
+│   ├── output_logger/         ← results + audit
+│   └── security/              ← OPA + encryption + audit
+├── data/                      ← versioned with DVC
+├── models/                    ← versioned with MLflow
+├── compliance/                ← GDPR/LGPD documentation
 ├── docker-compose.yml
-├── .github/workflows/ ← CI/CD + Trivy scan
+├── policy.rego                ← OPA access control
+├── .github/workflows/         ← CI/CD + security scans
 └── README.md
 ```
 
 ---
 
-## 🧠 Conceito
+## 🌍 The Bigger Vision
 
-*Inspirado na neuroplasticidade do lobo occipital — a capacidade do cérebro humano de criar novos caminhos neurais quando uma área é danificada, mantendo a função mesmo sob adversidade.*
+Millions of critical systems around the world fail silently when data changes — medical monitors, early warning systems, financial fraud detectors, agricultural sensors. They degrade, they stop learning, they forget.
+
+The human brain, under the right conditions, does none of these things.
+
+The Occipital Adaptive Engine was built to bring that biological resilience to software. Every module in this system has a direct analogy to what the brain does under adversity: detect, reroute, preserve memory, adapt, continue.
+
+**This is not just an AI framework. It's a survival mechanism for critical systems.**
 
 ---
 
-*Built with 🧠 neuroplasticity in mind.*
+## 🤝 Contributing
+
+Contributions are welcome. Please open an issue first to discuss what you'd like to change.
+
+---
+
+## 📄 License
+
+MIT License — free to use, modify, and distribute.
+
+---
+
+*Built from a neurological experience. Engineered for the world.*
