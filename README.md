@@ -1,200 +1,203 @@
 # 🧠 Occipital Adaptive Engine
 
-> **"The system that never breaks. It reroutes traffic the way my brain did."**
+> **"O sistema que nunca quebra. Ele rerroteia dados da mesma forma que meu cérebro reroteou a si mesmo."**
 
 [![Python 3.12](https://img.shields.io/badge/Python-3.12-blue?style=flat-square&logo=python)](https://python.org)
 [![PyTorch](https://img.shields.io/badge/PyTorch-2.5+-ee4c2c?style=flat-square&logo=pytorch)](https://pytorch.org)
-[![FastAPI](https://img.shields.io/badge/FastAPI-ready-009688?style=flat-square&logo=fastapi)](https://fastapi.tiangolo.com)
-[![Docker](https://img.shields.io/badge/Docker-ready-2496ED?style=flat-square&logo=docker)](https://docker.com)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow?style=flat-square)](LICENSE)
+[![FastAPI](https://img.shields.io/badge/FastAPI-pronto-009688?style=flat-square&logo=fastapi)](https://fastapi.tiangolo.com)
+[![Docker](https://img.shields.io/badge/Docker-pronto-2496ED?style=flat-square&logo=docker)](https://docker.com)
+[![License: MIT](https://img.shields.io/badge/Licença-MIT-yellow?style=flat-square)](LICENSE)
 
 ---
 
-## 🩺 The Origin Story
+## 🩺 A Origem
 
-This project was born from a real human experience.
+Este projeto nasceu de uma experiência humana real.
 
-After a neurological condition affecting the **right occipital lobe**, the brain didn't shut down — it adapted. It expanded sulci, rewired pathways, and redirected visual and pattern processing to other regions. The result: continued function under damage, without stopping, without retraining from scratch.
+Após uma condição neurológica afetando o **lobo occipital direito**, o cérebro não parou — ele se adaptou. Expandiu sulcos, reconectou vias neurais e redirecionou o processamento visual e de padrões para outras regiões. O resultado: funcionamento contínuo sob dano, sem parar, sem reaprender do zero.
 
-**That's exactly what this engine does for software systems.**
+**É exatamente isso que este motor faz para sistemas de software.**
 
-Most AI systems and data pipelines have a fatal flaw: when data changes, APIs break, sensors fail, or adversarial inputs arrive — they stop, degrade, or require full retraining. The Occipital Adaptive Engine was designed to **never stop**. It detects the anomaly, creates an alternative route, keeps running, and learns from what happened — all in real time.
+A grande maioria dos sistemas de IA e pipelines de dados possui um ponto cego fatal: quando os dados mudam, APIs quebram, sensores falham ou entradas adversariais chegam — eles travam, degradam ou exigem retreinamento completo. O Occipital Adaptive Engine foi projetado para **nunca parar**. Ele detecta a anomalia, cria uma rota alternativa, mantém o funcionamento e aprende com o ocorrido — tudo em tempo real.
 
-> *What the human brain did under damage is now an engineering principle.*
+> *O que o cérebro humano fez sob dano é agora um princípio de engenharia.*
 
 ---
 
-## ⚡ What It Does
+## ⚡ O Que Ele Faz
 
-The Occipital Adaptive Engine is a **self-healing, continual-learning middleware** that sits between your data sources and your applications. It processes incoming data streams, detects anomalies or structural changes, dynamically reroutes processing, and delivers reliable outputs — even when the input is broken, poisoned, or completely new.
+O Occipital Adaptive Engine é um **middleware de autorecuperação com aprendizado contínuo** que se posiciona entre suas fontes de dados e suas aplicações. Ele processa fluxos de dados, detecta anomalias ou mudanças estruturais, rerroteia o processamento dinamicamente e entrega saídas confiáveis — mesmo quando a entrada está corrompida, envenenada ou é completamente inédita.
 
 ```
-                    ┌─────────────────────────────────────────┐
-                    │         OCCIPITAL ADAPTIVE ENGINE        │
+                    ┌──────────────────────────────────────────┐
+                    │        OCCIPITAL ADAPTIVE ENGINE         │
                     │                                          │
- Any Data Source ──▶│  Ingest → Detect → Reroute → Learn      │──▶ Reliable Output
- (API/Sensor/Log)   │                    ↑                     │    + Audit Log
-                    │             Titans Memory                │    + Confidence Score
-                    └─────────────────────────────────────────┘
+ Qualquer Fonte ───▶│  Ingestão → Detecção → Roteamento       │──▶ Saída Confiável
+ (API/Sensor/Log)   │                → Aprendizado             │    + Log de Auditoria
+                    │             Memória Titans               │    + Score de Confiança
+                    └──────────────────────────────────────────┘
 ```
 
-### Core Capabilities
+### Capacidades Principais
 
-- **Real-time anomaly detection** — identifies data drift, corruption, API schema changes, and adversarial inputs as they happen
-- **Dynamic path creation** — spawns alternative processing routes without touching the main model
-- **Continual learning without forgetting** — learns from new patterns while preserving everything it already knows (solving catastrophic forgetting)
-- **Self-healing pipelines** — recovers from upstream failures automatically, with zero downtime
-- **Explainable decisions** — every rerouting decision is logged, scored, and auditable
-- **Plug-and-play integration** — connects to any existing system via REST, WebSocket, or streaming
+- **Detecção de anomalias em tempo real** — identifica deriva de dados, corrupção, mudanças de schema de API e entradas adversariais no momento em que ocorrem
+- **Criação dinâmica de rotas** — instancia rotas de processamento alternativas sem tocar no modelo principal
+- **Aprendizado contínuo sem esquecimento** — aprende novos padrões preservando todo o conhecimento acumulado (resolvendo o problema do esquecimento catastrófico)
+- **Pipelines autorrecuperáveis** — recupera-se automaticamente de falhas upstream, com zero tempo de inatividade
+- **Decisões explicáveis** — cada decisão de roteamento é registrada, pontuada e auditável
+- **Integração plug-and-play** — conecta-se a qualquer sistema existente via REST, WebSocket ou streaming
 
 ---
 
-## 🏗️ System Architecture
+## 🏗️ Arquitetura do Sistema
 
 ```
 ┌──────────────────────────────────────────────────────────────────┐
-│                         INPUT LAYER                              │
-│   REST API · WebSocket · CSV/JSON · Database · Sensor Stream     │
+│                        CAMADA DE ENTRADA                         │
+│       REST API · WebSocket · CSV/JSON · Banco · Sensores         │
 └────────────────────────────┬─────────────────────────────────────┘
                              ↓
 ┌──────────────────────────────────────────────────────────────────┐
-│                      CORE MODULE                                 │
-│              Main Processing + Feature Extraction                │
+│                        MÓDULO CENTRAL                            │
+│           Processamento Principal + Extração de Features         │
 └──────┬──────────────────────────────────────────────────┬────────┘
        ↓                                                  ↓
 ┌──────────────────┐                          ┌───────────────────┐
-│ ANOMALY DETECTOR │                          │   NORMAL OUTPUT   │
-│  Surprise Gate   │─── No anomaly ──────────▶│   Fast Path ✓     │
-│ (Real-time scan) │                          └───────────────────┘
+│ DETECTOR DE      │                          │   SAÍDA NORMAL    │
+│ ANOMALIAS        │─── Sem anomalia ────────▶│   Rota Rápida ✓   │
+│ (Surpresa Gate)  │                          └───────────────────┘
 └──────┬───────────┘
-       │ Anomaly detected
+       │ Anomalia detectada
        ↓
 ┌──────────────────────────────────────────────────────────────────┐
-│                     PLASTICITY LAYER                             │
-│         Creates new sub-route · Preserves main model             │
-│              EWC · LoRA · Dynamic Sparse Nets                    │
+│                      CAMADA DE PLASTICIDADE                      │
+│       Cria sub-rota alternativa · Preserva o modelo principal    │
+│                  EWC · LoRA · Redes Esparsas Dinâmicas           │
 └──────┬───────────────────────────────────────────────────────────┘
        ↓
 ┌──────────────────────────────────────────────────────────────────┐
-│                      TITANS MEMORY                               │
-│     Long-term vector store · Never forgets · Fast retrieval      │
-│            pgvector · FAISS · ChromaDB                           │
+│                        MEMÓRIA TITANS                            │
+│    Armazenamento vetorial de longo prazo · Nunca esquece ·       │
+│              Recuperação rápida                                  │
+│                pgvector · FAISS · ChromaDB                       │
 └──────┬───────────────────────────────────────────────────────────┘
        ↓
 ┌──────────────────────────────────────────────────────────────────┐
-│                   ADAPTIVE OUTPUT                                │
-│     Result + Confidence Score + Route Used + What Was Learned    │
+│                       SAÍDA ADAPTATIVA                           │
+│   Resultado + Score de Confiança + Rota Utilizada + O Que       │
+│   Foi Aprendido                                                  │
 └──────────────────────────────────────────────────────────────────┘
 ```
 
 ---
 
-## 🧩 Modules
+## 🧩 Módulos
 
-| Module | What It Does | Key Libraries |
+| Módulo | O Que Faz | Bibliotecas Principais |
 |---|---|---|
-| **Input Adapter** | Ingests JSON, CSV, REST, WebSocket, sensors, images | FastAPI · Pydantic · Kafka |
-| **Anomaly Detector** | Detects data drift, corruption, schema change in real time | Scikit-learn · River · custom Surprise Gate |
-| **Plasticity Layer** | Creates new processing routes without breaking the main model | PyTorch · EWC · LoRA · Avalanche |
-| **Titans Memory** | Long-term memory that never forgets past knowledge | pgvector · FAISS · ChromaDB |
-| **Router Engine** | Decides fast path (normal) or slow path (adaptive) automatically | Dynamic Sparse Nets · custom routing |
-| **Output + Logger** | Delivers results with confidence scores + full audit trail | MLflow · Prometheus · Grafana |
-| **Security Layer** | Encryption, access control, immutable audit logs | OPA · Vault · pgaudit · Trivy |
+| **Input Adapter** | Ingere JSON, CSV, REST, WebSocket, sensores, imagens | FastAPI · Pydantic · Kafka |
+| **Anomaly Detector** | Detecta deriva de dados, corrupção e mudanças de schema em tempo real | Scikit-learn · River · Surprise Gate customizado |
+| **Plasticity Layer** | Cria novas rotas de processamento sem quebrar o modelo principal | PyTorch · EWC · LoRA · Avalanche |
+| **Titans Memory** | Memória de longo prazo que nunca esquece conhecimentos passados | pgvector · FAISS · ChromaDB |
+| **Router Engine** | Decide automaticamente entre rota rápida (normal) ou lenta (adaptativa) | Redes Esparsas Dinâmicas · roteamento customizado |
+| **Output + Logger** | Entrega resultados com scores de confiança e trilha de auditoria completa | MLflow · Prometheus · Grafana |
+| **Security Layer** | Criptografia, controle de acesso, logs de auditoria imutáveis | OPA · Vault · pgaudit · Trivy |
 
 ---
 
-## 🏭 Industries & Use Cases
+## 🏭 Setores e Casos de Uso
 
-### 🏥 Medicine & Healthcare
-*Where it matters most — lives depend on reliable data.*
+### 🏥 Medicina e Saúde
+*Onde mais importa — vidas dependem de dados confiáveis.*
 
-- **Medical imaging analysis**: when a hospital upgrades equipment and image formats change, the system adapts without retraining — no gap in diagnosis support
-- **Patient monitoring**: detects anomalies in vital signs streams from ICU sensors, reroutes to alternative models if a sensor fails
-- **Drug interaction detection**: continuously learns from new pharmacological data without forgetting previous drug profiles
-- **Electronic health record drift**: automatically handles schema changes across hospital systems and data standards (HL7, FHIR)
-- **Epidemic early warning**: detects unusual disease patterns in real time, even when reporting formats from health posts change unexpectedly
+- **Análise de imagens médicas**: quando um hospital atualiza equipamentos e os formatos de imagem mudam, o sistema se adapta sem retreinamento — sem lacuna no suporte ao diagnóstico
+- **Monitoramento de pacientes**: detecta anomalias em fluxos de sinais vitais de sensores de UTI e reroticeia para modelos alternativos quando um sensor falha
+- **Detecção de interações medicamentosas**: aprende continuamente com novos dados farmacológicos sem esquecer perfis de medicamentos já conhecidos
+- **Deriva em prontuários eletrônicos**: lida automaticamente com mudanças de schema entre sistemas hospitalares e padrões de dados (HL7, FHIR)
+- **Alerta precoce de epidemias**: detecta padrões incomuns de doenças em tempo real, mesmo quando os formatos de reporte dos postos de saúde mudam inesperadamente
 
-> *This system exists because a human brain survived damage by adapting. It was built to give that same resilience to the systems that care for human brains.*
-
----
-
-### ⚡ Energy & Critical Infrastructure
-
-- Smart grid anomaly detection — identifies equipment failure patterns before blackouts occur
-- Oil & gas sensor failure recovery — keeps pipeline monitoring alive even when sensors go offline
-- Renewable energy output prediction that adapts as weather pattern data drifts seasonally
-- Nuclear plant monitoring with self-healing data pipelines that never drop readings
+> *Este sistema existe porque um cérebro humano sobreviveu a um dano se adaptando. Ele foi criado para dar essa mesma resiliência aos sistemas que cuidam de cérebros humanos.*
 
 ---
 
-### 🏦 Financial Services
+### ⚡ Energia e Infraestrutura Crítica
 
-- Fraud detection that adapts to new attack patterns in real time, without retraining cycles
-- Credit scoring pipelines that handle sudden economic shocks (pandemics, market crashes) without degrading
-- Trading systems that recover automatically from data feed interruptions
-- Anti-money laundering models that learn new laundering techniques continuously
-
----
-
-### 🌾 Agriculture & Food Security
-
-- Crop disease detection that adapts when new pathogens emerge
-- Satellite imagery pipelines that handle sensor degradation and cloud cover gracefully
-- Supply chain disruption detection — reroutes logistics prediction when supplier data stops
-- Soil sensor failure recovery in precision farming systems
+- Detecção de anomalias em redes elétricas inteligentes — identifica padrões de falha em equipamentos antes que apagões ocorram
+- Recuperação de falhas em sensores de óleo e gás — mantém o monitoramento de dutos ativo mesmo quando sensores ficam offline
+- Previsão de produção de energia renovável que se adapta à deriva sazonal de dados meteorológicos
+- Monitoramento de usinas nucleares com pipelines de dados autocurativos que nunca perdem leituras
 
 ---
 
-### 🏙️ Smart Cities & Public Safety
+### 🏦 Serviços Financeiros
 
-- Traffic management systems that self-heal when camera feeds go offline
-- Crime pattern detection that adapts to new urban behaviors without full retraining
-- Emergency response routing that reroutes when infrastructure data becomes unreliable
-- Water quality monitoring with adaptive anomaly detection across sensor networks
-
----
-
-### 🎓 Education & Research
-
-- Academic data pipelines that handle schema changes across university systems
-- Research data integrity checking — detects corrupted datasets before they contaminate analysis
-- Adaptive learning platforms that adjust to student behavior patterns in real time
+- Detecção de fraudes que se adapta a novos padrões de ataque em tempo real, sem ciclos de retreinamento
+- Pipelines de crédito que lidam com choques econômicos repentinos (pandemias, crashes de mercado) sem degradação
+- Sistemas de trading que se recuperam automaticamente de interrupções em feeds de dados
+- Modelos de prevenção à lavagem de dinheiro que aprendem continuamente novas técnicas de lavagem
 
 ---
 
-### 🚢 Defense & Maritime
+### 🌾 Agronegócio e Segurança Alimentar
 
-- Naval sensor fusion with automatic recovery from sensor degradation at sea
-- Radar anomaly detection that adapts to new interference patterns
-- Supply chain resilience for defense logistics under adversarial conditions
+- Detecção de doenças em lavouras que se adapta quando novos patógenos emergem
+- Pipelines de imagens de satélite que lidam graciosamente com degradação de sensores e cobertura de nuvens
+- Detecção de disrupções em cadeias de suprimentos — reroticeia previsões logísticas quando dados de fornecedores param
+- Recuperação de falhas em sensores de solo em sistemas de agricultura de precisão
 
 ---
 
-## 🚀 Quick Start
+### 🏙️ Cidades Inteligentes e Segurança Pública
+
+- Sistemas de gestão de tráfego que se autocuram quando feeds de câmeras ficam offline
+- Detecção de padrões criminais que se adapta a novos comportamentos urbanos sem retreinamento completo
+- Roteamento de resposta a emergências que reroticeia quando dados de infraestrutura se tornam não confiáveis
+- Monitoramento de qualidade da água com detecção adaptativa de anomalias em redes de sensores
+
+---
+
+### 🎓 Educação e Pesquisa
+
+- Pipelines de dados acadêmicos que lidam com mudanças de schema entre sistemas universitários
+- Verificação de integridade de dados de pesquisa — detecta conjuntos de dados corrompidos antes que contaminem análises
+- Plataformas de aprendizagem adaptativa que se ajustam a padrões de comportamento de estudantes em tempo real
+
+---
+
+### 🚢 Defesa e Setor Marítimo
+
+- Fusão de sensores navais com recuperação automática de degradação em alto mar
+- Detecção de anomalias em radar que se adapta a novos padrões de interferência
+- Resiliência da cadeia de suprimentos em logística de defesa sob condições adversariais
+
+---
+
+## 🚀 Início Rápido
 
 ```bash
-# Clone the repository
-git clone https://github.com/your-org/occipital-adaptive-engine.git
+# Clonar o repositório
+git clone https://github.com/sua-org/occipital-adaptive-engine.git
 cd occipital-adaptive-engine
 
-# Start everything with Docker
+# Subir tudo com Docker
 docker-compose up -d
 
-# The engine is now running at:
+# O motor está rodando em:
 # API:        http://localhost:8000
 # Dashboard:  http://localhost:3000  (Grafana)
 # MLflow UI:  http://localhost:5000
 # Docs:       http://localhost:8000/docs
 ```
 
-### Send your first data
+### Enviando seu primeiro dado
+
 ```python
 import httpx
 
 response = httpx.post("http://localhost:8000/process", json={
     "source": "sensor_stream",
-    "payload": {"temperature": 38.5, "pressure": 1.02},
-    "context": "icu_monitoring"
+    "payload": {"temperatura": 38.5, "pressao": 1.02},
+    "context": "monitoramento_uti"
 })
 
 print(response.json())
@@ -209,80 +212,80 @@ print(response.json())
 
 ---
 
-## 🛠️ Full Tech Stack
+## 🛠️ Stack Tecnológica Completa
 
 ```
-Language          Python 3.12
-ML Framework      PyTorch 2.5+ · TensorFlow · JAX
-Continual Learn   Avalanche · EWC · LoRA · Nested Rewiring
-Backend           FastAPI · Uvicorn · Celery
-Databases         PostgreSQL · pgvector · Redis · ChromaDB · FAISS
-Streaming         Apache Kafka · WebSocket
-Data Versioning   DVC + S3/MinIO
-Model Registry    MLflow
-Monitoring        Prometheus · Grafana · Loki
-Security          OPA · HashiCorp Vault · pgaudit · Trivy
-Deploy            Docker · Kubernetes · GitHub Actions
+Linguagem           Python 3.12
+Frameworks ML       PyTorch 2.5+ · TensorFlow · JAX
+Aprendizado Cont.   Avalanche · EWC · LoRA · Nested Rewiring
+Backend             FastAPI · Uvicorn · Celery
+Bancos de Dados     PostgreSQL · pgvector · Redis · ChromaDB · FAISS
+Streaming           Apache Kafka · WebSocket
+Versionamento       DVC + S3/MinIO
+Registro de Modelos MLflow
+Monitoramento       Prometheus · Grafana · Loki
+Segurança           OPA · HashiCorp Vault · pgaudit · Trivy
+Implantação         Docker · Kubernetes · GitHub Actions
 ```
 
 ---
 
-## 🔒 Security & Compliance
+## 🔒 Segurança e Conformidade
 
-- **Immutable audit logs** — every decision, every rerouting, every data access is logged and tamper-proof
-- **Policy-as-code** — access control defined in `.rego` files, versioned with the codebase
-- **Encrypted data at rest and in transit** — AES-256, per-environment keys
-- **Automatic vulnerability scanning** — every container image scanned before deploy
-- **Model versioning with rollback** — revert to any previous model state in one command
-- **Full LGPD / GDPR compliance** — data lineage, consent tracking, right to erasure
+- **Logs de auditoria imutáveis** — cada decisão, cada reroteamento, cada acesso a dados é registrado e à prova de adulteração
+- **Política como código** — controle de acesso definido em arquivos `.rego`, versionados junto ao código-fonte
+- **Dados criptografados em repouso e em trânsito** — AES-256, chaves por ambiente
+- **Varredura automática de vulnerabilidades** — cada imagem de container é escaneada antes da implantação
+- **Versionamento de modelos com rollback** — reverta para qualquer estado anterior do modelo em um único comando
+- **Conformidade plena com LGPD / GDPR** — linhagem de dados, rastreamento de consentimento, direito ao esquecimento
 
 ---
 
-## 📁 Repository Structure
+## 📁 Estrutura do Repositório
 
 ```
 occipital-adaptive-engine/
 ├── src/
-│   ├── input_adapter/         ← ingestion layer
-│   ├── anomaly_detector/      ← surprise gate + drift detection
-│   ├── plasticity_layer/      ← EWC + LoRA + dynamic rewiring
-│   ├── titans_memory/         ← long-term vector memory
-│   ├── router_engine/         ← fast/slow path routing
-│   ├── output_logger/         ← results + audit
-│   └── security/              ← OPA + encryption + audit
-├── data/                      ← versioned with DVC
-├── models/                    ← versioned with MLflow
-├── compliance/                ← GDPR/LGPD documentation
+│   ├── input_adapter/         ← camada de ingestão
+│   ├── anomaly_detector/      ← surprise gate + detecção de deriva
+│   ├── plasticity_layer/      ← EWC + LoRA + rewiring dinâmico
+│   ├── titans_memory/         ← memória vetorial de longo prazo
+│   ├── router_engine/         ← roteamento rota rápida/lenta
+│   ├── output_logger/         ← resultados + auditoria
+│   └── security/              ← OPA + criptografia + auditoria
+├── data/                      ← versionado com DVC
+├── models/                    ← versionado com MLflow
+├── compliance/                ← documentação LGPD/GDPR
 ├── docker-compose.yml
-├── policy.rego                ← OPA access control
-├── .github/workflows/         ← CI/CD + security scans
+├── policy.rego                ← controle de acesso OPA
+├── .github/workflows/         ← CI/CD + varreduras de segurança
 └── README.md
 ```
 
 ---
 
-## 🌍 The Bigger Vision
+## 🌍 A Visão Maior
 
-Millions of critical systems around the world fail silently when data changes — medical monitors, early warning systems, financial fraud detectors, agricultural sensors. They degrade, they stop learning, they forget.
+Milhões de sistemas críticos ao redor do mundo falham silenciosamente quando dados mudam — monitores médicos, sistemas de alerta precoce, detectores de fraude financeira, sensores agrícolas. Eles degradam, param de aprender, esquecem.
 
-The human brain, under the right conditions, does none of these things.
+O cérebro humano, nas condições certas, não faz nada disso.
 
-The Occipital Adaptive Engine was built to bring that biological resilience to software. Every module in this system has a direct analogy to what the brain does under adversity: detect, reroute, preserve memory, adapt, continue.
+O Occipital Adaptive Engine foi construído para trazer essa resiliência biológica ao software. Cada módulo deste sistema possui uma analogia direta ao que o cérebro faz sob adversidade: detectar, rerrotear, preservar memória, adaptar-se, continuar.
 
-**This is not just an AI framework. It's a survival mechanism for critical systems.**
-
----
-
-## 🤝 Contributing
-
-Contributions are welcome. Please open an issue first to discuss what you'd like to change.
+**Isso não é apenas um framework de IA. É um mecanismo de sobrevivência para sistemas críticos.**
 
 ---
 
-## 📄 License
+## 🤝 Contribuindo
 
-MIT License — free to use, modify, and distribute.
+Contribuições são bem-vindas. Por favor, abra uma issue antes para discutir o que você gostaria de modificar.
 
 ---
 
-*Built from a neurological experience. Engineered for the world.*
+## 📄 Licença
+
+Licença MIT — livre para usar, modificar e distribuir.
+
+---
+
+*Nascido de uma experiência neurológica. Engenheirado para o mundo.*
